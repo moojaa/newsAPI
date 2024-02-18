@@ -1,0 +1,138 @@
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.head-line{
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+}
+
+.head-line svg{
+    width: 430px;
+}
+
+#menu-wrapper{
+    display: none;
+    position: relative;
+}
+#menu-slide {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 250px;
+    height: 100vh;
+    background-color: beige;
+    transition: left 0.3s ease
+}
+
+.search-side-area{
+    display: flex;
+}
+
+.sidenav{
+    margin: 1em;
+}
+
+.search{
+    margin: 1em;
+    display: flex;
+    align-items: center;
+}
+
+#search-on{
+    display: none;
+}
+
+#menu-toggle{
+    border: none;
+    background: none;
+    padding: 0;
+    height: 2.5em;
+    font-size: 1.2em;
+}
+
+#search-on-btn{
+    border: none;
+    background: none;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 30px;
+}
+
+#search-on-btn:hover{
+    background: beige;
+}
+
+#menu-close{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    border: none;
+    background: none;
+    font-size: 1.5em;
+}
+
+#menu-content{
+    margin-top: 1.2em;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#menu-content button{
+    border: none;
+    background: none;
+
+    margin-top: 1em;
+}
+
+#menu-content button:hover{
+    background: #ebebeb;
+}
+
+#menu-list{
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 4px double black;
+    flex-wrap: wrap;
+}
+
+#menu-list button{
+    border: none;
+    background: none;
+    margin: 5px;
+}
+
+#menu-list button:hover{
+    background-color: beige;
+}
+
+.news{
+    border-bottom: 1px solid black;
+    padding: .5em;
+}
+
+.form-control{
+    width: auto;
+}
+
+.page-size-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media(max-width:778px){
+    #menu-list{
+        display: none;
+    }
+
+    #menu-wrapper{
+        display: block;
+    }
+}
