@@ -42,7 +42,6 @@ const getNews = async () => {
         url.searchParams.set("_limit",pageSize)
         const response = await fetch(url)
         const data = await response.json()
-        console.log(data)
         if (response.status === 200) {
             if (data.length === 0) {
                 throw new Error("결과없음")
