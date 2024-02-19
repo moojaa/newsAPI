@@ -1,6 +1,6 @@
 let newsList = []
 const menus = ["Business", "Entertainment", "General", "health", "Science", "Sports", "Technology"]
-let url = new URL(`http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines`)
+let url = new URL(`https://magnificent-bienenstitch-2f6f93.netlify.app/top-headlines`)
 let totalResult = 1
 let page = 1
 let pageSize = 10
@@ -59,19 +59,19 @@ const getNews = async () => {
 }
 
 const getLatestNews = async () => {
-    url = new URL(`http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines`)
+    url = new URL(`https://magnificent-bienenstitch-2f6f93.netlify.app/top-headlines`)
     getNews()
 }
 
 const Category = async (menus) => {
-    url = new URL(`http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines?category=${menus}`)
+    url = new URL(`https://magnificent-bienenstitch-2f6f93.netlify.app/top-headlines?category=${menus}`)
     moveToPage(1)
     getNews()
 }
 
 const getNewsSearch = async () => {
     const keyword = document.getElementById("search-input").value
-    url = new URL(`http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines?q=${keyword}`)
+    url = new URL(`https://magnificent-bienenstitch-2f6f93.netlify.app/top-headlines?q=${keyword}`)
     moveToPage(1)
     getNews()
 
