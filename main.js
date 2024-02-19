@@ -1,10 +1,10 @@
 const API_KEY = `cc67345053704887b33654702599fe26`;
 let newsList = []
 const menus = ["Business", "Entertainment", "General", "health", "Science", "Sports", "Technology"]
-let url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`)
+let url = new URL(`https://my-json-server.typicode.com/legobitna/times-be/top-headlines`)
 let totalResult = 1
 let page = 1
-let pageSize = 10
+let pageSize = 1
 const groupSize = 5
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -38,16 +38,17 @@ const pagesizeRe = () =>{
 
 const getNews = async () => {
     try {
-        url.searchParams.set("page",page)
-        url.searchParams.set("pageSize",pageSize)
+        url.searchParams.set("_page",page)
+        url.searchParams.set("_limit",pageSize)
         const response = await fetch(url)
         const data = await response.json()
+        console.log(data)
         if (response.status === 200) {
-            if (data.articles.length ===0) {
+            if (data.length === 0) {
                 throw new Error("결과없음")
             }
-            newsList = data.articles
-            totalResult = data.totalResults
+            newsList = data
+            totalResult = 10
             render()
             pageNationRender()
         } else {
@@ -60,18 +61,20 @@ const getNews = async () => {
 }
 
 const getLatestNews = async () => {
-    url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&apiKey=${API_KEY}`)
+    url = new URL(`https://my-json-server.typicode.com/legobitna/times-be/top-headlines`)
     getNews()
 }
 
 const Category = async (menus) => {
-    url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&category=${menus}&apiKey=${API_KEY}`)
+    url = new URL(`https://my-json-server.typicode.com/legobitna/times-be/top-headlines?category=${menus}`)
+    moveToPage(1)
     getNews()
 }
 
 const getNewsSearch = async () => {
     const keyword = document.getElementById("search-input").value
-    url = new URL(`https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${API_KEY}`)
+    url = new URL(`https://my-json-server.typicode.com/legobitna/times-be/top-headlines?q=${keyword}`)
+    moveToPage(1)
     getNews()
 
 }
