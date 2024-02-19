@@ -1,10 +1,9 @@
-const API_KEY = `cc67345053704887b33654702599fe26`;
 let newsList = []
 const menus = ["Business", "Entertainment", "General", "health", "Science", "Sports", "Technology"]
-let url = new URL(`https://my-json-server.typicode.com/legobitna/times-be/top-headlines`)
+let url = new URL(`http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines`)
 let totalResult = 1
 let page = 1
-let pageSize = 1
+let pageSize = 10
 const groupSize = 5
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -38,16 +37,16 @@ const pagesizeRe = () =>{
 
 const getNews = async () => {
     try {
-        url.searchParams.set("_page",page)
-        url.searchParams.set("_limit",pageSize)
+        url.searchParams.set("page",page)
+        url.searchParams.set("pageSize",pageSize)
         const response = await fetch(url)
         const data = await response.json()
         if (response.status === 200) {
-            if (data.length === 0) {
+            if (data.articles.length === 0) {
                 throw new Error("결과없음")
             }
-            newsList = data
-            totalResult = 10
+            newsList = data.articles
+            totalResult = data.totalResults
             render()
             pageNationRender()
         } else {
@@ -60,19 +59,19 @@ const getNews = async () => {
 }
 
 const getLatestNews = async () => {
-    url = new URL(`https://my-json-server.typicode.com/legobitna/times-be/top-headlines`)
+    url = new URL(`http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines`)
     getNews()
 }
 
 const Category = async (menus) => {
-    url = new URL(`https://my-json-server.typicode.com/legobitna/times-be/top-headlines?category=${menus}`)
+    url = new URL(`http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines?category=${menus}`)
     moveToPage(1)
     getNews()
 }
 
 const getNewsSearch = async () => {
     const keyword = document.getElementById("search-input").value
-    url = new URL(`https://my-json-server.typicode.com/legobitna/times-be/top-headlines?q=${keyword}`)
+    url = new URL(`http://times-node-env.eba-appvq3ef.ap-northeast-2.elasticbeanstalk.com/top-headlines?q=${keyword}`)
     moveToPage(1)
     getNews()
 
