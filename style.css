@@ -28,10 +28,6 @@ input[type="number"]::-webkit-inner-spin-button {
     transition: left 0.3s ease
 }
 
-.search-side-area{
-    display: flex;
-}
-
 .sidenav{
     margin: 1em;
 }
@@ -134,5 +130,12 @@ input[type="number"]::-webkit-inner-spin-button {
 
     #menu-wrapper{
         display: block;
+    }
+
+    .head-line svg{
+        width: 330px;
+    }
+    .form-control{
+        width: 10em;
     }
 }
